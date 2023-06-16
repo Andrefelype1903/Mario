@@ -1,4 +1,5 @@
 const mario = document.querySelector('.mario');
+const areaJogo = document.querySelector('.game-board')
 
 
 const jump = () => {
@@ -7,4 +8,4 @@ const jump = () => {
 
 
 document.addEventListener('keydown', jump);
-document.addEventListener('touch', jump);
+areaJogo.addEventListener('touchstart', jump);
