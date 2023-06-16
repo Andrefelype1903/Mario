@@ -7,4 +7,4 @@ const jump = () => {
 
 
 document.addEventListener('keydown', jump);
-document.addEventListener('onclick', jump);
+document.addEventListener('touch', jump);
