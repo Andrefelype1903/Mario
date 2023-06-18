@@ -81,3 +81,9 @@
     }
 }
 
+@media screen and (max-width: 580px) {
+    .pipe {
+        animation: pipe-animation 800ms infinite linear;
+    }
+}
+
