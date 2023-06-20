@@ -6,9 +6,9 @@ const botaoComecar = document.querySelector('.botão-start')
 
 botaoComecar.addEventListener('click', () => {
 
-
     mario.src = './image/mario.gif'
     pipe.src = './image/pipe.png'
+    void pipe.offsetLeft
     pipe.style.animation = 'pipe-animation 1.5s infinite linear';
     botaoComecar.style.display = 'none'
 })
@@ -43,7 +43,9 @@ const loop = setInterval(() => {
             mario.style.width = '35px'
             mario.style.marginLeft = '50px'
     
-            clearInterval(loop)
+            clearInterval(loop);
+
+            botaoComecar.style.display = "";
         }
     } else {
 
