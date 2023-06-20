@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +20,7 @@
     position: absolute;
     bottom: 0;
     width: 80px;
-    animation: pipe-animation 1.5s infinite linear;
+    animation: none;
 }
 
 .mario {
@@ -36,8 +38,46 @@
     width: 550px;
     position: absolute;
     animation: cloud-animation 20s infinite linear;
+    z-index: 1;
 }
 
+.botão-start {
+    position: absolute;
+    background: cyan;
+    bottom: 50%;
+    border-radius: 20px;
+    left: 50%;
+    width: 250px;
+    border: none;
+    transform: translate(-50%, 0);
+    padding: 1.5rem;
+    font-size: 2rem;
+    font-family: 'Playfair+Display';
+    z-index: 2;
+    
+
+}
+
+
+.botão-start::before {
+    content: "";
+    background-color: rgb(89, 204, 20);
+    display: block;
+    position: absolute;
+    border-radius: 20px;
+    inset: 0;
+    z-index: -1;
+    transition: transform 300ms ease;
+    cursor: default;
+    transform-origin: right;
+    transform: scaleX(0);
+}
+
+.botão-start:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+    border-radius: 20px;
+}
 
 @keyframes pipe-animation {
     from {
@@ -93,6 +133,10 @@
 
     .pipe {
         width: 40px;
+    }
+
+    .clouds {
+        width: 300px;
     }
 
     @keyframes jump {

@@ -1,6 +1,17 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const areaJogo = document.querySelector('.game-board')
+const botaoComecar = document.querySelector('.botão-start')
+
+
+botaoComecar.addEventListener('click', () => {
+
+
+    mario.src = './image/mario.gif'
+    pipe.src = './image/pipe.png'
+    pipe.style.animation = 'pipe-animation 1.5s infinite linear';
+    botaoComecar.style.display = 'none'
+})
 
 
 const jump = () => {
@@ -48,7 +59,12 @@ const loop = setInterval(() => {
             mario.style.width = '75px'
             mario.style.marginLeft = '50px'
     
-            clearInterval(loop)
+            clearInterval(loop);
+
+            botaoComecar.style.display = "";
+
+            // mario.src = ""
+            // pipe.src = ""
         }
     }
 
