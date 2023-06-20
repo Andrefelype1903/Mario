@@ -3,15 +3,79 @@ const pipe = document.querySelector('.pipe');
 const areaJogo = document.querySelector('.game-board')
 const botaoComecar = document.querySelector('.botão-start')
 
+const tamanhoTela = window.innerWidth;
+
 
 botaoComecar.addEventListener('click', () => {
 
     mario.src = './image/mario.gif'
     pipe.src = './image/pipe.png'
-    void pipe.offsetLeft
-    pipe.style.animation = 'pipe-animation 1.5s infinite linear';
+
+    if(tamanhoTela <= 580) {
+        pipe.style.animation = 'pipe-animation 800ms infinite linear';
+        mario.style.width ='75px';
+        pipe.style.width = '40px'
+    } else {
+        pipe.style.animation = 'pipe-animation 1.5s infinite linear';
+    }
+    
     botaoComecar.style.display = 'none'
+
+
+
+
+    const loop = setInterval(() => {
+
+        const pipePosition = pipe.offsetLeft;
+        const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+        console.log(marioPosition)
+    
+        
+    
+        if(tamanhoTela <= 580) {
+    
+            
+            if(pipePosition <= 80 && pipePosition > 0 && marioPosition < 40) {
+    
+                pipe.style.animation = 'none';
+                pipe.style.left = `${pipePosition}px`;
+        
+                mario.style.animation = 'none';
+                mario.style.bottom = `${marioPosition}px`;
+        
+                mario.src = './image/game-over.png'
+                mario.style.width = '35px'
+                mario.style.marginLeft = '50px'
+        
+                clearInterval(loop);
+    
+                botaoComecar.style.display = "";
+            }
+        } else {
+    
+            if(pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
+        
+                pipe.style.animation = 'none';
+                pipe.style.left = `${pipePosition}px`;
+        
+                mario.style.animation = 'none';
+                mario.style.bottom = `${marioPosition}px`;
+        
+                mario.src = './image/game-over.png'
+                mario.style.width = '75px'
+                mario.style.marginLeft = '50px'
+        
+                clearInterval(loop);
+    
+                botaoComecar.style.display = "";
+    
+            }
+        }
+    }, 10)
 })
+
+mario.src = ''
+pipe.src = ''
 
 
 const jump = () => {
@@ -22,56 +86,6 @@ const jump = () => {
     }, 500)
 }
 
-const loop = setInterval(() => {
-
-    const pipePosition = pipe.offsetLeft;
-    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
-    console.log(marioPosition)
-
-    const tamanhoTela = window.innerWidth;
-
-    if(tamanhoTela <= 580) {
-        if(pipePosition <= 80 && pipePosition > 0 && marioPosition < 40) {
-
-            pipe.style.animation = 'none';
-            pipe.style.left = `${pipePosition}px`;
-    
-            mario.style.animation = 'none';
-            mario.style.bottom = `${marioPosition}px`;
-    
-            mario.src = './image/game-over.png'
-            mario.style.width = '35px'
-            mario.style.marginLeft = '50px'
-    
-            clearInterval(loop);
-
-            botaoComecar.style.display = "";
-        }
-    } else {
-
-        if(pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
-    
-            pipe.style.animation = 'none';
-            pipe.style.left = `${pipePosition}px`;
-    
-            mario.style.animation = 'none';
-            mario.style.bottom = `${marioPosition}px`;
-    
-            mario.src = './image/game-over.png'
-            mario.style.width = '75px'
-            mario.style.marginLeft = '50px'
-    
-            clearInterval(loop);
-
-            botaoComecar.style.display = "";
-
-            // mario.src = ""
-            // pipe.src = ""
-        }
-    }
-
-
-}, 10)
 
 
 document.addEventListener('keydown', jump);
