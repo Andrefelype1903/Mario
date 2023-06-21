@@ -3,10 +3,27 @@ const pipe = document.querySelector('.pipe');
 const areaJogo = document.querySelector('.game-board')
 const botaoComecar = document.querySelector('.botão-start')
 
+
+const jump = () => {
+    mario.classList.add('jump');
+
+    setTimeout(() => {
+        mario.classList.remove('jump')
+    }, 500)
+}
+
 const tamanhoTela = window.innerWidth;
 
+function restart() {
+    pipe.src = ""
+}
 
 botaoComecar.addEventListener('click', () => {
+
+    document.addEventListener('keydown', jump);
+    areaJogo.addEventListener('touchstart', jump); 
+
+    restart()
 
     mario.src = './image/mario.gif'
     pipe.src = './image/pipe.png'
@@ -21,16 +38,11 @@ botaoComecar.addEventListener('click', () => {
     
     botaoComecar.style.display = 'none'
 
-
-
-
     const loop = setInterval(() => {
 
         const pipePosition = pipe.offsetLeft;
         const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
         console.log(marioPosition)
-    
-        
     
         if(tamanhoTela <= 580) {
     
@@ -72,21 +84,12 @@ botaoComecar.addEventListener('click', () => {
             }
         }
     }, 10)
+
+    mario.src ='./image/mario.gif'
 })
 
-mario.src = ''
-pipe.src = ''
-
-
-const jump = () => {
-    mario.classList.add('jump');
-
-    setTimeout(() => {
-        mario.classList.remove('jump')
-    }, 500)
-}
 
 
 
-document.addEventListener('keydown', jump);
-areaJogo.addEventListener('touchstart', jump); 
+
+
