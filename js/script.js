@@ -2,7 +2,7 @@ const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const areaJogo = document.querySelector('.game-board')
 const botaoComecar = document.querySelector('.botão-start')
-
+const tamanhoTela = window.innerWidth;
 
 const jump = () => {
     mario.classList.add('jump');
@@ -12,19 +12,13 @@ const jump = () => {
     }, 500)
 }
 
-const tamanhoTela = window.innerWidth;
-
-function restart() {
-    pipe.src = ""
-}
 
 botaoComecar.addEventListener('click', () => {
 
     document.addEventListener('keydown', jump);
     areaJogo.addEventListener('touchstart', jump); 
 
-    restart()
-
+    
     mario.src = './image/mario.gif'
     pipe.src = './image/pipe.png'
 
@@ -33,16 +27,17 @@ botaoComecar.addEventListener('click', () => {
         mario.style.width ='75px';
         pipe.style.width = '40px'
     } else {
-        pipe.style.animation = 'pipe-animation 1.5s infinite linear';
+        pipe.style.animation = 'pipe-animation 1.5s infinite linear';;
     }
-    
+
     botaoComecar.style.display = 'none'
+    
 
     const loop = setInterval(() => {
 
         const pipePosition = pipe.offsetLeft;
         const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
-        console.log(marioPosition)
+        console.log(pipePosition)
     
         if(tamanhoTela <= 580) {
     
@@ -78,14 +73,12 @@ botaoComecar.addEventListener('click', () => {
                 mario.style.marginLeft = '50px'
         
                 clearInterval(loop);
-    
+
                 botaoComecar.style.display = "";
     
             }
         }
     }, 10)
-
-    mario.src ='./image/mario.gif'
 })
 
 
