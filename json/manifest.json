@@ -1,0 +1,16 @@
+{
+    "name": "Jogo do mario",
+    "short_name": "Mario jump",
+    "icons": [
+        {
+            "src": "../image/mario_jump.png",
+            "sizes": "192x192"
+        }
+    ],
+
+    "start_url": "../index.html",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "backgroud_color": "#ffffff"
+
+}
